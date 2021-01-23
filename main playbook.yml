@@ -1,0 +1,9 @@
+
+- hosts: localhost
+  tasks:
+   - include_role:
+        name: mylb
+- hosts: b
+  tasks:
+   - include_role:
+        name: myweb

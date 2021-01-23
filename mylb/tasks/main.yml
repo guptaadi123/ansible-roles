@@ -1,0 +1,19 @@
+---
+# tasks file for mylb
+
+ - name: "Installing haproxy"
+   yum:
+    name: "haproxy"
+ - name: "editing and pasting haproxy file"
+   template:
+    src: haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+ - name: "starting ha proxy serice"
+   service:
+     name: "haproxy"
+     state: restarted
+     enabled: yes
+ - name: "disabling selinux"
+   ansible.posix.selinux:
+     policy: targeted
+     state: permissive   

@@ -1,0 +1,17 @@
+---
+# tasks file for myweb
+
+ - name: "installing http and php"
+   package:
+      name:
+        - httpd
+        - php 
+      state: present
+ - name: "putting index.php file in backend server"
+   copy:
+      src: index.php
+      dest: /var/www/html/index.php
+ - name: "starting haproxy server"
+   service:
+      name: httpd
+      state: started
